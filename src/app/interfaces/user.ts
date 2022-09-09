@@ -9,3 +9,7 @@ export interface UserResponse {
   };
   access_token: string;
 }
+
+export interface LogoutResponse {
+  message: string;
+}

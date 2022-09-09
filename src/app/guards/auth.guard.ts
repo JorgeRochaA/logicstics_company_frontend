@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let userExist = this.cookie.check('user');
+    const userExist = this.cookie.check('user');
     this.redirect(userExist);
     return userExist;
   }

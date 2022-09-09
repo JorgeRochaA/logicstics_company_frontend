@@ -32,10 +32,12 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            jor2018.cr@gmail.com
+            {{ email }}
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item">Close Session</a></li>
+            <li>
+              <a class="dropdown-item" (click)="logout()">Close Session</a>
+            </li>
           </ul>
         </li>
       </ul>
