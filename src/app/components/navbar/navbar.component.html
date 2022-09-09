@@ -1,0 +1,44 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" [routerLink]="'/'"
+      ><img
+        src="
+    https://cdn-icons-png.flaticon.com/512/726/726455.png"
+        alt="logo"
+      />Logistics company</a
+    >
+    <button
+      *ngIf="userLogged"
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      *ngIf="userLogged"
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown" id="dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            jor2018.cr@gmail.com
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Close Session</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
