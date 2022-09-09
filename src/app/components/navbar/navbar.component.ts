@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from './../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   userLogged: boolean = false;
-  constructor() {}
+  email!: string;
+  constructor(
+    private cookie: CookieService,
+    private user: UserService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkUser();
+  }
+
+  checkUser(): void {
+    this.userLogged = this.cookie.check('user');
+    if (this.userLogged) {
+      const {
+        user: { email },
+      } = JSON.parse(this.cookie.get('user'));
+      this.email = email;
+    }
+  }
+
+  logout(): void {
+    this.user.logout().subscribe({
+      next: (res) => {
+        this.cookie.delete('user');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

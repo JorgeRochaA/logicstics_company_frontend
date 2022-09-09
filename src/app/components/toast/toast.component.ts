@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Toast } from 'src/app/interfaces/toast';
 
 @Component({
@@ -6,9 +6,7 @@ import { Toast } from 'src/app/interfaces/toast';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss'],
 })
-export class ToastComponent implements OnInit {
+export class ToastComponent {
   @Input() toastData!: Toast;
   constructor() {}
-
-  ngOnInit(): void {}
 }

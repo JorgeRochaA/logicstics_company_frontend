@@ -2,7 +2,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { UserResponse } from '../interfaces/user';
+import { LogoutResponse, UserResponse } from '../interfaces/user';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,10 @@ export class UserService {
 
   login(data: FormData): Observable<UserResponse> {
     return this.http.post<UserResponse>(`${environment.apiUrl}/login`, data);
+  }
+
+  logout(): Observable<LogoutResponse> {
+    return this.http.post<LogoutResponse>(`${environment.apiUrl}/logout`, {});
   }
 
   setUser(user: UserResponse): void {
