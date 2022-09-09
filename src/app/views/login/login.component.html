@@ -1,5 +1,6 @@
 <div class="login_container">
   <app-navbar></app-navbar>
+  <app-toast [toastData]="toastData"></app-toast>
   <div class="logo_form_container">
     <div class="logo_container">
       <img
@@ -8,15 +9,21 @@
       />
       <h2>Logistics company</h2>
     </div>
-    <form class="px-4 py-3">
+    <form class="px-4 py-3" [formGroup]="loginForm">
       <div class="form-group">
         <label for="exampleDropdownFormEmail1">Email address</label>
         <input
           type="email"
-          class="form-control my-2 is-invalid"
+          class="form-control my-2"
           placeholder="email@example.com"
+          formControlName="email"
+          [ngClass]="{
+            'is-invalid':
+              (formControls.email.invalid &&
+                (formControls.email.dirty || formControls.email.touched)) ||
+              (submitted && formControls.email.errors?.required)
+          }"
         />
-        <div class="is-invalid mb-2">Email required</div>
       </div>
       <div class="form-group">
         <label for="exampleDropdownFormPassword1">Password</label>
@@ -24,10 +31,18 @@
           type="password"
           class="form-control my-2"
           placeholder="Password"
+          formControlName="password"
+          [ngClass]="{
+            'is-invalid':
+              (formControls.password.invalid &&
+                (formControls.password.dirty ||
+                  formControls.password.touched)) ||
+              (submitted && formControls.password.errors?.required) ||
+              formControls.password.errors?.password
+          }"
         />
-        <div class="is-invalid mb-2">Password required</div>
       </div>
-      <button type="submit" class="btn btn-primary">Log in</button>
+      <button (click)="login()" class="btn btn-primary">Log in</button>
     </form>
   </div>
 </div>
