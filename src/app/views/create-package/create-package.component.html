@@ -57,33 +57,42 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Customer</label>
-      <select
-        class="form-select"
-        formControlName="fk_id_customer"
-        [ngClass]="{
-          'is-invalid':
-            (formControls.fk_id_customer.invalid &&
-              (formControls.fk_id_customer.dirty ||
-                formControls.fk_id_customer.touched)) ||
-            (submitted && formControls.fk_id_customer.errors?.required)
-        }"
-      >
-        <option selected value="" disabled>---Select a Customer---</option>
-        <option
-          *ngFor="let customer of customers"
-          [value]="customer.id_customer"
+      <div class="d-flex gap-3" style="max-height: 50px">
+        <select
+          class="form-select"
+          formControlName="fk_id_customer"
+          [ngClass]="{
+            'is-invalid':
+              (formControls.fk_id_customer.invalid &&
+                (formControls.fk_id_customer.dirty ||
+                  formControls.fk_id_customer.touched)) ||
+              (submitted && formControls.fk_id_customer.errors?.required)
+          }"
         >
-          {{
-            "(" +
-              customer.id_customer +
-              ")" +
-              " " +
-              customer.name +
-              " " +
-              customer.lastName
-          }}
-        </option>
-      </select>
+          <option selected value="" disabled>---Select a Customer---</option>
+          <option
+            *ngFor="let customer of customers"
+            [value]="customer.id_customer"
+          >
+            {{
+              "(" +
+                customer.id_customer +
+                ")" +
+                " " +
+                customer.name +
+                " " +
+                customer.lastName
+            }}
+          </option>
+        </select>
+        <a
+          class="btn btn-primary"
+          [routerLink]="'/customer/create'"
+          style="font-size: 0.8rem"
+        >
+          add customer</a
+        >
+      </div>
     </div>
     <button type="submit" class="btn btn-primary" (click)="addPackage()">
       Submit
