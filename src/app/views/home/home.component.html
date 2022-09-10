@@ -1,0 +1,50 @@
+<div class="home_container">
+  <app-navbar [location]="'home'"></app-navbar>
+  <app-toast [toastData]="toastData"></app-toast>
+  <div class="package_option">
+    <h2 class="ms-3">Packages</h2>
+    <div>
+      <a class="btn btn-success ms-3" [routerLink]="'/package/create'"
+        >Add Package</a
+      >
+      <a class="btn btn-primary ms-3" [routerLink]="'/packages/on-route'"
+        >See Packages on route</a
+      >
+    </div>
+  </div>
+  <div class="table-responsive mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Details</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Status</th>
+          <th scope="col">Name</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Email</th>
+          <th scope="col">Option</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let package of packages">
+          <th scope="row">{{ package.id }}</th>
+          <td>{{ package.details }}</td>
+          <td>{{ package.weight }} kg</td>
+          <td>{{ package.status.name }}</td>
+          <td>{{ package.customer.name }}</td>
+          <td>{{ package.customer.lastName }}</td>
+          <td>{{ package.customer.email }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="putOnRoute(package.id)">
+              put on route
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="map" #divMap></div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.navbar {
+  background-color: #0871b9 !important;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  .navbar-brand {
+    margin-left: 50px;
+    gap: 10px;
+    img {
+      height: 50px;
+    }
+  }
+  .navbar_logo_container {
+    height: 100%;
+    width: 300px;
+    margin-left: 100px;
+    img {
+      height: 100%;
+    }
+  }
+}

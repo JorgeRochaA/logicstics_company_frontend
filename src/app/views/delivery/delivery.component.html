@@ -1,0 +1,14 @@
+<div class="delivery_route_container">
+  <app-navbar [location]="'route'"></app-navbar>
+  <google-map
+    *ngIf="wayPoints"
+    [options]="options"
+    height="87.7vh"
+    width="100vw"
+  >
+    <map-directions-renderer
+      *ngIf="directionsResults$ | async as directionsResults"
+      [directions]="directionsResults"
+    ></map-directions-renderer
+  ></google-map>
+</div>

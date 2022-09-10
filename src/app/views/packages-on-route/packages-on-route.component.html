@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<app-toast [toastData]="toastData"></app-toast>
+<div class="packages_on_routes_container">
+  <div class="title">
+    <h2 class="my-3 ms-3">Packages on route</h2>
+  </div>
+  <div class="table-responsive mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Details</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Status</th>
+          <th scope="col">Name</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Email</th>
+          <th scope="col">Option</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let package of packages">
+          <th scope="row">{{ package.id }}</th>
+          <td>{{ package.details }}</td>
+          <td>{{ package.weight }} kg</td>
+          <td>{{ package.status.name }}</td>
+          <td>{{ package.customer.name }}</td>
+          <td>{{ package.customer.lastName }}</td>
+          <td>{{ package.customer.email }}</td>
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="returnToWarehouse(package.id)"
+            >
+              return to Warehouse
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-success"
+              (click)="markAsDelivered(package.id)"
+            >
+              mark as Delivered
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="map" #divMap></div>
+  </div>
+</div>
