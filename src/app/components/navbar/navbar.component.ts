@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UserService } from './../../services/user.service';
@@ -11,6 +11,7 @@ import { UserService } from './../../services/user.service';
 export class NavbarComponent implements OnInit {
   userLogged: boolean = false;
   email!: string;
+  @Input() location?: string;
   constructor(
     private cookie: CookieService,
     private user: UserService,

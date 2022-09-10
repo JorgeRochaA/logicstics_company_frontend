@@ -1,3 +1,4 @@
+import { GoogleMapsModule } from '@angular/google-maps';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastComponent } from './components/toast/toast.component';
+import { DeliveryComponent } from './views/delivery/delivery.component';
+import { CreateCustomerComponent } from './views/create-customer/create-customer.component';
+import { CreatePackageComponent } from './views/create-package/create-package.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +21,9 @@ import { ToastComponent } from './components/toast/toast.component';
     LoginComponent,
     NavbarComponent,
     ToastComponent,
+    DeliveryComponent,
+    CreateCustomerComponent,
+    CreatePackageComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +31,7 @@ import { ToastComponent } from './components/toast/toast.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
   ],
   providers: [
     CookieService,
