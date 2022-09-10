@@ -1,25 +1,27 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { PackageResponse, UpdatePackage } from './../../interfaces/package';
 import { PackageService } from './../../services/package.service';
+import { Component, OnInit } from '@angular/core';
+import { PackageResponse, UpdatePackage } from 'src/app/interfaces/package';
 import { Toast } from 'src/app/interfaces/toast';
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-packages-on-route',
+  templateUrl: './packages-on-route.component.html',
+  styleUrls: ['./packages-on-route.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class PackagesOnRouteComponent implements OnInit {
   packages!: Array<PackageResponse>;
   toastData: Toast = {
     title: '',
     message: '',
   };
   constructor(private packageService: PackageService) {}
+
   ngOnInit(): void {
     this.getPackages();
   }
 
   getPackages(): void {
-    this.packageService.getPackages(1).subscribe({
+    this.packageService.getPackages(2).subscribe({
       next: (data: any) => {
         this.packages = data.packages;
       },
@@ -28,11 +30,18 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+  returnToWarehouse(id: number): void {
+    this.changeStatus(id, 1);
+  }
 
-  putOnRoute(id: number): void {
+  markAsDelivered(id: number): void {
+    this.changeStatus(id, 3);
+  }
+
+  changeStatus(id: number, status: number): void {
     const data: UpdatePackage = {
       id: id,
-      fk_id_status: 2,
+      fk_id_status: status,
     };
     this.packageService.updatePackage(data).subscribe({
       next: (data: any) => {
