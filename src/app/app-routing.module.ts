@@ -1,3 +1,4 @@
+import { PackagesOnRouteComponent } from './views/packages-on-route/packages-on-route.component';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateCustomerComponent } from './views/create-customer/create-customer.component';
 import { CreatePackageComponent } from './views/create-package/create-package.component';
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'package/create',
     component: CreatePackageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'packages/on-route',
+    component: PackagesOnRouteComponent,
     canActivate: [AuthGuard],
   },
 ];

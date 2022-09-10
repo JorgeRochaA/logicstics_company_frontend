@@ -15,6 +15,7 @@ import { DeliveryComponent } from './views/delivery/delivery.component';
 import { CreateCustomerComponent } from './views/create-customer/create-customer.component';
 import { CreatePackageComponent } from './views/create-package/create-package.component';
 import { MapComponent } from './components/map/map.component';
+import { PackagesOnRouteComponent } from './views/packages-on-route/packages-on-route.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { MapComponent } from './components/map/map.component';
     CreateCustomerComponent,
     CreatePackageComponent,
     MapComponent,
+    PackagesOnRouteComponent,
   ],
   imports: [
     BrowserModule,
