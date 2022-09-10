@@ -23,11 +23,11 @@ export class CreateCustomerComponent implements OnInit {
     private router: Router
   ) {
     this.customerForm = this.formBuilder.group({
-      id_customer: ['801400015', [Validators.required]],
+      id_customer: ['', [Validators.required]],
       name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-      email: ['jorge@gmail.com', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
