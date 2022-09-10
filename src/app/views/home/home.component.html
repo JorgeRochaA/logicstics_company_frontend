@@ -12,8 +12,8 @@
       >
     </div>
   </div>
-  <div class="table-responsive mt-5">
-    <table class="table">
+  <div class="table-responsive mt-5" style="min-height: 200px">
+    <table class="table" style="min-height: 200px">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -29,7 +29,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let package of packages">
+        <tr *ngFor="let package of packages | paginatePackages: page">
           <th scope="row">{{ package.id }}</th>
           <td>{{ package.details }}</td>
           <td>{{ package.weight }} kg</td>
@@ -45,6 +45,30 @@
         </tr>
       </tbody>
     </table>
-    <div class="map" #divMap></div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination gap-2">
+        <li class="page-item">
+          <button
+            class="btn btn-primary"
+            (click)="previousPage()"
+            [disabled]="page == 0"
+          >
+            <span aria-hidden="true">&laquo;</span>
+          </button>
+        </li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item">
+          <button
+            class="btn btn-primary"
+            [disabled]="(packages | paginatePackages: page).length === 0"
+            (click)="nextPage()"
+          >
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>

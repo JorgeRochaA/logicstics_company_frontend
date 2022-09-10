@@ -9,6 +9,7 @@ import { Toast } from 'src/app/interfaces/toast';
 })
 export class HomeComponent implements OnInit {
   packages!: Array<PackageResponse>;
+  page: number = 0;
   toastData: Toast = {
     title: '',
     message: '',
@@ -16,6 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private packageService: PackageService) {}
   ngOnInit(): void {
     this.getPackages();
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.packages.length / 5);
   }
 
   getPackages(): void {
@@ -27,6 +32,15 @@ export class HomeComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+
+  nextPage(): void {
+    this.page += 5;
+  }
+  previousPage(): void {
+    if (this.page > 0) {
+      this.page -= 5;
+    }
   }
 
   putOnRoute(id: number): void {
