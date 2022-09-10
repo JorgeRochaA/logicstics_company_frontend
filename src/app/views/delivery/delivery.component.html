@@ -1,3 +1,14 @@
 <div class="delivery_route_container">
   <app-navbar [location]="'route'"></app-navbar>
+  <google-map
+    [options]="options"
+    height="87.7vh"
+    width="100vw"
+    (mapClick)="addMarker($event)"
+  >
+    <map-marker
+      [position]="markerPosition"
+      [options]="markerOptions"
+    ></map-marker
+  ></google-map>
 </div>

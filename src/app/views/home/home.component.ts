@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PackageResponse, UpdatePackage } from './../../interfaces/package';
 import { PackageService } from './../../services/package.service';
 import { Toast } from 'src/app/interfaces/toast';
@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
     message: '',
   };
   constructor(private packageService: PackageService) {}
-  map = null;
   ngOnInit(): void {
     this.getPackages();
   }

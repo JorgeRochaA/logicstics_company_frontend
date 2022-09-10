@@ -1,0 +1,14 @@
+.create_package_container {
+  max-width: 100vw;
+  .title {
+    margin: 15px 0;
+  }
+  form {
+    max-width: 90%;
+    width: 400px;
+    textarea {
+      min-height: 65px;
+      max-height: 65px;
+    }
+  }
+}

@@ -1,3 +1,92 @@
+<app-navbar></app-navbar>
+<app-map (saveLocationEvent)="getLocation($event)"></app-map>
 <div class="create_package_container">
-  <app-navbar></app-navbar>
+  <div class="title">
+    <h2 class="ms-3">Add new package</h2>
+  </div>
+  <form class="ms-3" [formGroup]="packageForm">
+    <div class="mb-3">
+      <label class="form-label">Details</label>
+      <textarea
+        class="form-control"
+        formControlName="details"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.details.invalid &&
+              (formControls.details.dirty || formControls.details.touched)) ||
+            (submitted && formControls.details.errors?.required)
+        }"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Weight</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="weight"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.weight.invalid &&
+              (formControls.weight.dirty || formControls.weight.touched)) ||
+            (submitted && formControls.weight.errors?.required)
+        }"
+      />
+      <div class="is-invalid mt-3" *ngIf="formControls.weight.errors?.max">
+        max value is 100 kg.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Delivery to</label>
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary form-control"
+        data-bs-toggle="modal"
+        data-bs-target="#mapModal"
+      >
+        Select address on the map
+      </button>
+      <div
+        class="is-invalid mt-3"
+        *ngIf="submitted && formControls.delivery_to.errors?.required"
+      >
+        Delivery to is required.
+      </div>
+      <div class="is-invalid mt-3" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <!-- Modal -->
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Customer</label>
+      <select
+        class="form-select"
+        formControlName="fk_id_customer"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.fk_id_customer.invalid &&
+              (formControls.fk_id_customer.dirty ||
+                formControls.fk_id_customer.touched)) ||
+            (submitted && formControls.fk_id_customer.errors?.required)
+        }"
+      >
+        <option selected value="" disabled>---Select a Customer---</option>
+        <option
+          *ngFor="let customer of customers"
+          [value]="customer.id_customer"
+        >
+          {{
+            "(" +
+              customer.id_customer +
+              ")" +
+              " " +
+              customer.name +
+              " " +
+              customer.lastName
+          }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addPackage()">
+      Submit
+    </button>
+  </form>
 </div>

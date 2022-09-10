@@ -1,3 +1,4 @@
+import { Package } from './../interfaces/package';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -9,7 +10,12 @@ import { environment } from 'src/environments/environment';
 export class PackageService {
   constructor(private http: HttpClient) {}
 
-  addPackage(data: FormData) {}
+  addPackage(data: FormData) {
+    return this.http.post<Package>(
+      `${environment.apiUrl}/package/create`,
+      data
+    );
+  }
   getPackages(status: number) {
     return this.http.get<Array<PackageResponse>>(
       `${environment.apiUrl}/package/get/${status}`

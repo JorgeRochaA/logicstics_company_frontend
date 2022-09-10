@@ -1,4 +1,4 @@
-import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { DeliveryComponent } from './views/delivery/delivery.component';
 import { CreateCustomerComponent } from './views/create-customer/create-customer.component';
 import { CreatePackageComponent } from './views/create-package/create-package.component';
+import { MapComponent } from './components/map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { CreatePackageComponent } from './views/create-package/create-package.co
     DeliveryComponent,
     CreateCustomerComponent,
     CreatePackageComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { CreatePackageComponent } from './views/create-package/create-package.co
   ],
   providers: [
     CookieService,
+    GoogleMap,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -16,3 +16,10 @@ export interface UpdatePackage {
   id: number;
   fk_id_status: number;
 }
+
+export interface Package {
+  details: string;
+  weight: number;
+  delivery_to: string;
+  fk_id_customer: number;
+}
