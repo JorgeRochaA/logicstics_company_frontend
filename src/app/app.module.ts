@@ -16,6 +16,7 @@ import { CreateCustomerComponent } from './views/create-customer/create-customer
 import { CreatePackageComponent } from './views/create-package/create-package.component';
 import { MapComponent } from './components/map/map.component';
 import { PackagesOnRouteComponent } from './views/packages-on-route/packages-on-route.component';
+import { PaginatePackagesPipe } from './pipes/paginate-packages.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { PackagesOnRouteComponent } from './views/packages-on-route/packages-on-
     CreatePackageComponent,
     MapComponent,
     PackagesOnRouteComponent,
+    PaginatePackagesPipe,
   ],
   imports: [
     BrowserModule,
