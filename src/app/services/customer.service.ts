@@ -11,4 +11,8 @@ export class CustomerService {
   getCustomers() {
     return this.http.get<Array<Customer>>(`${environment.apiUrl}/customer/get`);
   }
+
+  createCustomer(data: FormData) {
+    return this.http.post(`${environment.apiUrl}/customer/create`, data);
+  }
 }

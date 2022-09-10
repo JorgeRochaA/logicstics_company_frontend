@@ -1,0 +1,11 @@
+.create_customer_container {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  .title {
+    margin: 15px 0;
+  }
+  form {
+    max-width: 90%;
+    width: 400px;
+  }
+}

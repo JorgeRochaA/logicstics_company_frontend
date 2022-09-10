@@ -5,3 +5,8 @@ export interface Customer {
   phone: string;
   email: string;
 }
+
+export interface CreateCustomerError {
+  email: string;
+  id_customer: string;
+}

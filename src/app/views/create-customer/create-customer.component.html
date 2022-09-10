@@ -1,1 +1,89 @@
-<p>create-customer works!</p>
+<app-navbar [location]="'customer'"></app-navbar>
+<div class="create_customer_container">
+  <div class="title">
+    <h2 class="ms-3">Add new customer</h2>
+  </div>
+  <form class="ms-3" [formGroup]="customerForm">
+    <div class="mb-3">
+      <label>id Customer</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="id_customer"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.id_customer.invalid &&
+              (formControls.id_customer.dirty ||
+                formControls.id_customer.touched)) ||
+            (submitted && formControls.id_customer.errors?.required)
+        }"
+      />
+      <div class="is-invalid" *ngIf="errors.id_customer">
+        {{ errors.id_customer }}
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.name.invalid &&
+              (formControls.name.dirty || formControls.name.touched)) ||
+            (submitted && formControls.name.errors?.required)
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label>LastName</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="last_name"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.last_name.invalid &&
+              (formControls.last_name.dirty ||
+                formControls.last_name.touched)) ||
+            (submitted && formControls.last_name.errors?.required)
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label>Phone</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="phone"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.phone.invalid &&
+              (formControls.phone.dirty || formControls.phone.touched)) ||
+            (submitted && formControls.phone.errors?.required)
+        }"
+      />
+    </div>
+    <div class="mb-3">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            (formControls.email.invalid &&
+              (formControls.email.dirty || formControls.email.touched)) ||
+            (submitted && formControls.email.errors?.required)
+        }"
+      />
+      <div class="is-invalid" *ngIf="errors.email">
+        {{ errors.email }}
+      </div>
+    </div>
+    <button type="submit" (click)="createCustomer()" class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>

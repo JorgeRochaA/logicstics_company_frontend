@@ -12,30 +12,18 @@ import { PackageService } from 'src/app/services/package.service';
 })
 export class DeliveryComponent implements OnInit {
   @ViewChild(GoogleMap) map!: GoogleMap;
-  private directionsRenderer: any;
   packages!: Array<PackageResponse>;
   warehouse = { lat: 9.929048216297826, lng: -84.09722946943353 };
   options: google.maps.MapOptions = {
     center: this.warehouse,
     zoom: 18,
   };
-  directionsResults$: Observable<google.maps.DirectionsResult | undefined>;
+  directionsResults$!: Observable<google.maps.DirectionsResult | undefined>;
   wayPoints: any = [];
   constructor(
     private mapDirectionsService: MapDirectionsService,
     private packageService: PackageService
-  ) {
-    const request: google.maps.DirectionsRequest = {
-      origin: this.warehouse,
-      destination: this.warehouse,
-      waypoints: this.wayPoints,
-      optimizeWaypoints: true,
-      travelMode: google.maps.TravelMode.DRIVING,
-    };
-    this.directionsResults$ = mapDirectionsService
-      .route(request)
-      .pipe(map((response) => response.result));
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getPackagesForDelivery();
